@@ -12,14 +12,14 @@ import javax.xml.soap.Text;
 import java.util.List;
 
 public class Controller {
-    List<Country> countries;
+    private List<Country> countries;
 
     @FXML // fx:id="list";
     ListView<String> list;
     @FXML // fx:id="city_cnt";
             Label city_cnt;
 
-    String filter = "";
+    private String filter = "";
 
     public Controller(){
         countries = Country.getCountries();
@@ -30,8 +30,8 @@ public class Controller {
         ObservableList<String> bridge_list = FXCollections.observableArrayList();
         for(Country c: countries){
 
-            if (this.filter!=""){
-                if(c.getName().toLowerCase().indexOf(this.filter.toLowerCase())<0){
+            if (this.filter.equals("")){
+                if(c.getName().toLowerCase().contains(this.filter.toLowerCase())){
                     continue;
                 }
             }
@@ -53,7 +53,7 @@ public class Controller {
 
         for(Country c: countries)
         {
-            if (selected == c.getName()){
+            if (selected.equals(c.getName())){
                 String txt = Integer.toString(c.getCities());
                 city_cnt.setText(txt);
             }
