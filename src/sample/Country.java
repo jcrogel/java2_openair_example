@@ -41,7 +41,7 @@ public class Country {
             InputStreamReader reader = new InputStreamReader(address.openStream());
             BufferedReader buffer = new BufferedReader(reader);
 
-            String line = "";
+            String line;
             while((line = buffer.readLine()) != null){
                 if (line.isEmpty()) {
                     break;
